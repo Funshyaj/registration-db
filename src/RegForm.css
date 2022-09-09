@@ -1,0 +1,205 @@
+*{  margin: 0;
+  padding: 0;
+box-sizing: border-box;}
+#root {
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App{
+  background-color: lightcyan;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.Home{width:100%;
+height:100%;}
+
+.regform{
+  border-top: 5px solid blue;
+  border-radius: 3px;
+  display: flex;
+ gap:10px;
+  flex-direction: column;
+  margin: 50px auto 5px;
+  box-shadow: 2px 2px 6px #00000047;
+  position:relative;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  text-align: center;
+}
+@media screen and (min-width:768px){
+  .regform{
+    width: 60%;}
+
+    .regform > h1{
+      font-size: 2.3rem;
+    }
+}
+
+
+.regform > h1{
+  margin: 10px auto;
+}
+.main{width: 80%;
+  margin:auto;
+ }
+
+input{
+border: 1px solid lightgray;
+transition: .2s;
+}
+
+ input:focus{
+  border: 1.5px solid rgba(0, 0, 255, 0.658); 
+  border-radius: 3px;
+ }
+
+#name{display: flex;
+  justify-content: space-between;
+margin: 10px auto;
+flex-wrap: wrap;
+gap: 20px;
+}
+
+
+
+.name{
+  flex-grow: 1;
+  width: 130px;
+  padding: 15px;
+  font-size: 1rem;
+}
+
+#mail{
+  display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+    gap: 20px;
+    width: 100%;
+    flex-direction: column;
+}
+.email{
+  min-width: 100px;
+  padding: 15px;
+  font-size: 1rem;
+}
+ 
+
+
+.radio{
+  display: flex;
+    justify-content: space-evenly;
+    margin: 20px auto;
+    gap: 16px;
+    width: 100%;
+}
+.radio-b{
+  height: 23px;
+  width: 35px;
+  cursor: pointer;
+}
+.radio-one{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.submit-btn{
+  border-radius: 3px;
+  background-color: blue;
+  color:white;
+  padding: 10px;
+  font-size: 1.3rem;
+  outline: none;
+  border: none;
+  margin: 15px 0px 30px;
+  cursor: pointer;
+}
+
+.submit-btn:active{
+  background-color: rgba(0, 0, 255, 0.562);
+}
+
+.end-txt{
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 15px;
+  color: rgba(0, 0, 255, 0.562)
+}
+
+
+
+/** Welcome display css **/
+.modal-container{
+  z-index: 1;
+  display:block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .welcome{
+    position: absolute;
+  top:50%;
+  left:50%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px black;
+  width: 80%;
+  height:auto; 
+  margin: 10px auto;
+  text-align: center;
+  padding:5px 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 30px;
+  animation: drop 2s;
+  }
+  
+  @keyframes drop {
+    from{
+      top: -700px;
+      opacity: 0;
+    }
+    to{
+      top:50%;
+      opacity:1;
+    }
+  }
+  
+  .proceed-btn{
+    background-color: hsla(190, 40%, 50%, 1);
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .btn-container{
+      display: flex;
+  justify-content: flex-end;
+  }
+  
+  
