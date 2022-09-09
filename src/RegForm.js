@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Welcome from "./Welcome";
 import { db } from "./firebaseConfig";
-import { ref, push, update, child } from "firebase/database";
+import { addDoc } from "firebase/firestore";
 
+const regCollection = collection(db, "Information ");
 
 const Form = () => {
     //boolean state 
@@ -30,18 +31,15 @@ function handleSubmit(e){
     }  
     console.log(obj)
 
-const newPostKey = push(child(ref(db),"posts")).key;
-const updates = {}
-updates["/" + newPostKey] = obj
-
   if((obj.firstName === null || "") && (obj.lastName === null || "")  && (obj.email === null  || "") && 
   (obj.phone === null || "")){
-   alert("Fill in all your data correctly")
+   alert("Fill in all your data")
   }
   
 else
-{return update(ref(db),updates)
-    .then(()=>{
+{return addDoc(regCollection, obj)
+    .then((e)=>{
+        e.target.reset
   if((obj.firstName !== null || "") && (obj.lastName !== null || "")  && (obj.email !== null  || "") && 
   (obj.phone !== null || ""))
   {alert("Data was added succesfully")}
