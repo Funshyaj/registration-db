@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Welcome from "./Welcome";
 import { db } from "./firebaseConfig";
-import { addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 const regCollection = collection(db, "Information ");
 
