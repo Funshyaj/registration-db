@@ -7,10 +7,6 @@ box-sizing: border-box;}
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 .App{
   background-color: lightcyan;
