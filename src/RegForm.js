@@ -19,8 +19,7 @@ const remove =()=>setclick(!click)
 
 //submit function
 function handleSubmit(e){
-    console.log(sex)
-   const datab = db;
+
     let obj ={
         firstName:firstName,
         lastName:lastName,
@@ -39,7 +38,7 @@ function handleSubmit(e){
 else
 {return addDoc(regCollection, obj)
     .then((e)=>{
-        e.target.reset
+       // e.target.reset
   if((obj.firstName !== null || "") && (obj.lastName !== null || "")  && (obj.email !== null  || "") && 
   (obj.phone !== null || ""))
   {alert("Data was added succesfully")}
