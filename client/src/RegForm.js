@@ -19,15 +19,19 @@ const Form = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
-    
-        axios.get('http://localhost:4000/api')
+    const fetch = async()=>{
+         await  axios.get('http://localhost:4000/api')
         .then(res => {
           setData(res.data.message)
           console.log(res.data.message)
           })
         .catch((error) => {
           console.log(error);
-        })  
+        })    
+    }
+
+    fetch()
+   
     }, []);
 
     //function for removing the welcome message
@@ -36,7 +40,7 @@ const remove =()=>setmodal(!modal)
 
 //submit function
 function handleSubmit(e){
-
+e.preventDefault()
     let obj ={
         firstName:firstName,
         lastName:lastName,

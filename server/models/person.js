@@ -19,4 +19,7 @@ let personSchema = new Schema({
 }, {
     collection: 'persons'
   })
-module.exports = mongoose.model('person', personSchema)
+
+  
+let Person = mongoose.model("Person", personSchema);
+module.exports = Person
