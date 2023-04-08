@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import Welcome from "./Welcome";
+import axios from "axios"
 // import { db } from "./firebaseConfig";
 // import { collection, addDoc } from "firebase/firestore";
 
@@ -15,6 +16,19 @@ const Form = () => {
      const [sex, setSex] = useState(null)
     const [email, setEmail] = useState(null)
     const [phone, setPhone] = useState(null)
+    const [data, setData] = React.useState(null);
+
+    React.useEffect(() => {
+    
+        axios.get('http://localhost:4000/api')
+        .then(res => {
+          setData(res.data.message)
+          console.log(res.data.message)
+          })
+        .catch((error) => {
+          console.log(error);
+        })  
+    }, []);
 
     //function for removing the welcome message
 const remove =()=>setmodal(!modal)
@@ -32,10 +46,10 @@ function handleSubmit(e){
 
     }  
 
-    axios.post('http://localhost:4000/add-student', obj)
+    axios.post('http://localhost:4000/add-person', obj)
       .then(res => console.log(res.data));
-    console.log(obj)
 
+      
   if((obj.firstName === null || "") && (obj.lastName === null || "")  && (obj.email === null  || "") && 
   (obj.phone === null || "")){
    alert("Fill in all your data")
@@ -119,6 +133,7 @@ if(id === "radio2"){
         </div>
         </div>
         <p className="end-txt">Make sure details entered are correct before submiting!</p>
+        <p>{!data ? "Loading..." : data}</p>
         </div>
     
   

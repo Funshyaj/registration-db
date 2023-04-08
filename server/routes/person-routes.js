@@ -8,6 +8,7 @@ router.route('/add-person').post((req, res, next) => {
   personSchema.create(req.body, (error, data) => {
     if (error) {
       return next(error)
+      console.log(error)
     } else {
       console.log(data)
       res.json(data)
