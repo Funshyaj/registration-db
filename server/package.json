@@ -4,7 +4,8 @@
   "description": "backend server to create api and route for frontend to use",
   "main": "index.js",
   "scripts": {
-    "test": "start"
+    "test": "start",
+    "start": "node index.js"
   },
   "keywords": [
     "server"
