@@ -89,7 +89,7 @@ if(id === "radio2"){
              <h1>Registration form</h1>
     <div className="main">
        
-    <form> 
+    <form onSubmit={(e)=>{handleSubmit(e)}}> 
         <div id="name"> 
 <input className="name" type="text"  value={firstName} onChange={(e)=>handleChange(e)} id="firstName" placeholder="First name" required />
 <input className="name" type="text" id="lastName" value={lastName} onChange={(e)=>handleChange(e)} placeholder="Last name" required />
@@ -111,7 +111,7 @@ if(id === "radio2"){
   </div>
    </div>
         
-    <button className="submit-btn" type="submit" onClick={(e)=>handleSubmit(e)}>Submit</button>
+    <button className="submit-btn" type="submit">Submit</button>
         </form>
         </div>
         </div>
