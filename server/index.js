@@ -27,14 +27,18 @@ app.use(cors());
 app.use('/add-person', personRoute)
 
 // mount
-// app.get('/', (req, res) => {
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-//   })
+// Handle GET requests to /api route
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server!" });
+});
 
-  app.get((req, res) => {
-    res.sendFile(path.join(__dirname, "..", "/client/build", "/index.html"));
-    // app.use(express.static(path.resolve(__dirname, "../client/build")));
-  });
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
 
   
 // PORT
@@ -42,6 +46,8 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
+
+
 // 404 Error
 app.use((req, res, next) => {
   next(createError(404));
