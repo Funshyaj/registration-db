@@ -31,6 +31,9 @@ function handleSubmit(e){
         phone:phone,
 
     }  
+
+    axios.post('http://localhost:4000/add-student', obj)
+      .then(res => console.log(res.data));
     console.log(obj)
 
   if((obj.firstName === null || "") && (obj.lastName === null || "")  && (obj.email === null  || "") && 
