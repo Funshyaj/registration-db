@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Welcome from "./Welcome";
-import { db } from "./firebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
+// import { db } from "./firebaseConfig";
+// import { collection, addDoc } from "firebase/firestore";
 
-const regCollection = collection(db, "Information ");
+// const regCollection = collection(db, "Information ");
 
 const Form = () => {
     //boolean state 
-    const [click, setclick] = useState(true)
+    const [modal, setmodal] = useState(true)
+
+    // details state
      const [firstName, setFirstName] = useState(null)
     const [lastName, setLastName] = useState(null)
      const [sex, setSex] = useState(null)
@@ -15,7 +17,8 @@ const Form = () => {
     const [phone, setPhone] = useState(null)
 
     //function for removing the welcome message
-const remove =()=>setclick(!click)
+const remove =()=>setmodal(!modal)
+
 
 //submit function
 function handleSubmit(e){
@@ -35,16 +38,16 @@ function handleSubmit(e){
    alert("Fill in all your data")
   }
   
-else
-{return addDoc(regCollection, obj)
-    .then((e)=>{
-       // e.target.reset
-  if((obj.firstName !== null || "") && (obj.lastName !== null || "")  && (obj.email !== null  || "") && 
-  (obj.phone !== null || ""))
-  {alert("Data was added succesfully")}
-    })
-    .catch((error)=> {alert("There was an error :"+ error)})
-}
+// else
+// {return addDoc(regCollection, obj)
+//     .then((e)=>{
+//        // e.target.reset
+//   if((obj.firstName !== null || "") && (obj.lastName !== null || "")  && (obj.email !== null  || "") && 
+//   (obj.phone !== null || ""))
+//   {alert("Data was added succesfully")}
+//     })
+//     .catch((error)=> {alert("There was an error :"+ error)})
+// }
 }
 
 //setting input state
@@ -78,7 +81,7 @@ if(id === "radio2"){
 //html display
     return (  
         <div className="Home" >
-{click && <div className="modal-container">
+{modal && <div className="modal-container">
     <Welcome handleClick={remove}/>
     </div> }
 
@@ -108,7 +111,7 @@ if(id === "radio2"){
   </div>
    </div>
         
-    <button className="submit-btn" type="submit"  onClick={(e)=>handleSubmit(e)}>Submit</button>
+    <button className="submit-btn" type="submit" onClick={(e)=>handleSubmit(e)}>Submit</button>
         </form>
         </div>
         </div>

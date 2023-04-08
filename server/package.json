@@ -1,0 +1,15 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "backend node server for hosting this registration webpage to host the endpoint for updating the mongo database",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "start"
+  },
+  "keywords": [
+    "server"
+  ],
+  "author": "funsho",
+  "license": "ISC"
+}
