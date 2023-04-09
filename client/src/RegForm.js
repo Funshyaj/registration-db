@@ -11,11 +11,11 @@ const Form = () => {
     const [modal, setmodal] = useState(true)
 
     // details state
-     const [firstName, setFirstName] = useState(null)
-    const [lastName, setLastName] = useState(null)
+     const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
      const [sex, setSex] = useState(null)
-    const [email, setEmail] = useState(null)
-    const [phone, setPhone] = useState(null)
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
@@ -23,11 +23,10 @@ const Form = () => {
          await  axios.get('http://localhost:4000/api')
         .then(res => {
           setData(res.data.message)
-          console.log(res.data.message)
           })
         .catch((error) => {
           console.log(error);
-        })    
+        })   
     }
 
     fetch()
@@ -36,7 +35,6 @@ const Form = () => {
 
     //function for removing the welcome message
 const remove =()=>setmodal(!modal)
-
 
 //submit function
 function handleSubmit(e){
@@ -47,11 +45,12 @@ e.preventDefault()
         sex:sex,
         email:email,
         phone:phone,
-
     }  
 
-    axios.post('http://localhost:4000/add-person', obj)
-      .then(res => console.log(res.data));
+    console.log(obj)
+
+    // axios.post('http://localhost:4000/add-person', obj)
+    //   .then(res => console.log(res.data));
 
       
   if((obj.firstName === null || "") && (obj.lastName === null || "")  && (obj.email === null  || "") && 
@@ -74,7 +73,7 @@ e.preventDefault()
 //setting input state
 function handleChange(e){
     const {id, value} = e.target
-if(id=== "firstName"){
+if(id === "firstName"){
 setFirstName(value)
 }
 if(id === "lastName"){
@@ -87,10 +86,10 @@ if(id === "phone"){
     setPhone(value)
 }
 if(id === "radio1"){
-    setSex("Male")
+    setSex(value)
 }
 if(id === "radio2"){
-    setSex("Female")
+    setSex(value)
 }
 }
 
@@ -124,11 +123,11 @@ if(id === "radio2"){
     <div className="radio">
         <div className="radio-one">
         <label> Male</label>  
-        <input className="radio-b" type="radio" id="radio1" />
+        <input className="radio-b" type="radio" id="radio1" value="Male" name='sex' onChange={(e)=>handleChange(e)}/>
  </div>
         <div className="radio-one">
      <label>Female</label>
-     <input className="radio-b" type="radio"  id="radio2" />
+     <input className="radio-b" type="radio"  id="radio2" value="Female" name='sex' onChange={(e)=>handleChange(e)}/>
   </div>
    </div>
         

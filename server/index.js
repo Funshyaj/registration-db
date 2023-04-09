@@ -8,7 +8,7 @@ require('dotenv').config();
 let Person = require('./models/person');
 
 // Express Route
-// const personRoute = require('./routes/person-routes');
+const personRoute = require('./routes/person-routes');
 
 // Connecting mongoDB Database
 mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true, useUnifiedTopology: true })
@@ -19,47 +19,24 @@ mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true, useUnifiedTopolo
     console.error('Error connecting to mongo because', err.reason)
   })
 
+  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cors());
+// mounting the routes from the router
+app.use('/', personRoute)
 
 
 // mount
 // Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+// app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
-
-// Handle GET requests to /api route
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!, i love you" });
-});
-
-// func for adding person with .create()
-var createPerson = (person)=> {
-  Person.create(person, (err, person)=> {
-    if (err) {
-      if (err) return handleError(err);
-    } else {
-      console.log("uploaded")
-  };
-})};
-
-
-// setting endpoint for posting user
-app.post('/add-person' ,(req, res) => {
-  let body = req.body
-  createPerson(body)
-});
-
-
-
-
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+// });
 
 
   
