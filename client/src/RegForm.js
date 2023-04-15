@@ -47,10 +47,10 @@ e.preventDefault()
         phone:phone,
     }  
 
-    console.log(obj)
+    // console.log(obj)
 
-    // axios.post('http://localhost:4000/add-person', obj)
-    //   .then(res => console.log(res.data));
+    axios.post('http://localhost:4000/add-person', obj)
+      .then(res => console.log("succesfully " ,res.data));
 
       
   if((obj.firstName === null || "") && (obj.lastName === null || "")  && (obj.email === null  || "") && 
@@ -117,7 +117,7 @@ if(id === "radio2"){
         <div id="mail">
     <input className="email" type="email" id="email" value={email} onChange={(e)=>handleChange(e)} placeholder="Email" required />
     
-    <input className="email" type="phone" id="phone" value={phone} onChange={(e)=>handleChange(e)} placeholder="Phone number" required />
+    <input className="email" type="number" id="phone" value={phone} onChange={(e)=>handleChange(e)} placeholder="Phone number" required />
 
 </div>
     <div className="radio">
