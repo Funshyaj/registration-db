@@ -11,7 +11,7 @@ let personSchema = require('../models/person');
 
 // CREATE person
 router.route('/add-person').post((req, res, next) => {
-  personSchema.create(req.body).then((result)=>{
+  personSchema.create(req.body).then(result=>{
     console.log("created :" + result)
     res.json(result)
   })
@@ -25,7 +25,7 @@ router.route('/add-person').post((req, res, next) => {
 
 // READ person
 router.route('/get-people').get((req, res) => {
-   personSchema.find({}).then((result)=>{
+   personSchema.find({}).then(result=>{
     console.log("received :" + result)
     res.json(result)
   })
@@ -37,24 +37,20 @@ router.route('/get-people').get((req, res) => {
   });
   });
 
+
 // Update person
-// router.route('/update-person/:id').put((req, res, next) => {
-//   personSchema.findByIdAndUpdate(req.params.id, {
-//     $set: req.body
-//   }, (error, data) => {
-//     if (error) {
-//       return next(error);
-//       console.log(error)
-//     } else {
-//       res.json(data)
-//       console.log('person updated successfully !')
-//     }
-//   })
-// })
+router.route('/update-person/:id').put((req, res, next) => {
+  personSchema.findByIdAndUpdate(req.params.id,{$set: req.body}).then(result=> res.json(result))
+.catch(err=> {
+  res.json(err.message)
+console.log(err.message)
+})
+}) 
+
 
   // Delete person
 router.route('/delete-person/:id').delete((req, res, next) => {
-  personSchema.findByIdAndRemove(req.params.id).then((result)=>{
+  personSchema.findByIdAndRemove(req.params.id).then(result=>{
    console.log("deleted :" + result)
       res.json(result)
     })
