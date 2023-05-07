@@ -38,7 +38,7 @@ const remove =()=>setmodal(!modal)
 
 //submit function
 function handleSubmit(e){
-e.preventDefault()
+// e.preventDefault()
     let obj ={
         firstName:firstName,
         lastName:lastName,
@@ -50,10 +50,9 @@ e.preventDefault()
     // console.log(obj)
 
     axios.post('http://localhost:4000/add-person', obj)
-      .then(res => console.log("succesfully " ,res.data));
+      .then(res => alert("Registration succesfull, dont register twice"));
 
-      
-  if((obj.firstName === null || "") && (obj.lastName === null || "")  && (obj.email === null  || "") && 
+   if((obj.firstName === null || "") && (obj.lastName === null || "")  && (obj.email === null  || "") && 
   (obj.phone === null || "")){
    alert("Fill in all your data")
   }

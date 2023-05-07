@@ -63,6 +63,7 @@ router.route('/delete-person/:id').delete((req, res, next) => {
 
 
 // Handle GET requests to /api route
+// this is just for testing
 router.route("/api").get((req, res) => {
   res.json({ message: "Hello from server!, i love you" });
 });
